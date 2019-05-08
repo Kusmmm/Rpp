@@ -1,9 +1,16 @@
 {
   "name": "rpp-app",
-  "version": "0.1.0",
+  "productName": "Electron tutorial app",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "electron": "^5.0.1",
+    "framework7": "^4.3.1",
+    "mobx-react": "^5.4.3",
     "react": "^16.8.6",
+    "react-beautiful-dnd": "^11.0.2",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
   },
@@ -11,7 +18,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/logo.svg --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "main": "src/electron-starter.js",
+  "devDependencies": {
+    "electron-packager": "^13.1.1"
   }
 }
