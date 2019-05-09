@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+import LoginScreen from './screens/LoginScreen';
+
 //navbar
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +25,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
 
 const styles = {
   root: {
@@ -115,6 +116,7 @@ export default class App extends Component {
   };
 
   openMenu=()=>{
+    console.log(this.props.store);
     this.setState({
       left: true
     })
@@ -136,6 +138,7 @@ export default class App extends Component {
       items
     });
   }
+
 
 
   render() {
@@ -184,7 +187,6 @@ export default class App extends Component {
             {sideList}
           </div>
         </Drawer>
-
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
