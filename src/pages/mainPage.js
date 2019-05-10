@@ -36,9 +36,9 @@ const data = {
             "cards": [
                 {
                     "id": "Milk",
-                    "title": "Buy milk",
+                    "title": " Заголовок карточки 1",
                     "label": "15 mins",
-                    "description": "2 Gallons of milk at the Deli store",
+                    "description": "Описание карточки",
                     "people": "123"
                 },
                 {
@@ -49,37 +49,37 @@ const data = {
                 },
                 {
                     "id": "Plan3",
-                    "title": "Write Blog",
+                    "title": "Сделать пост",
                     "label": "30 mins",
                     "description": "Can AI make memes?"
                 },
                 {
                     "id": "Plan4",
-                    "title": "Pay Rent",
+                    "title": "Сделать бд",
                     "label": "5 mins",
-                    "description": "Transfer to bank account"
+                    "description": "рыолрвафлорвылфо"
                 }
             ]
         },
         {
             "id": "WIP",
-            "title": "Work In Progress",
-            "label": "10/20",
+            "title": "Сделать рапапа",
+            "label": "Описание",
             "style": {
                 "width": 280
             },
             "cards": [
                 {
                     "id": "Wip1",
-                    "title": "Clean House",
+                    "title": "ПРодать душу дьяволу",
                     "label": "30 mins",
-                    "description": "Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses"
+                    "description": "Получаем все лабы и идём сдавать"
                 }
             ]
         },
         {
             "id": "BLOCKED",
-            "title": "Blocked",
+            "title": "Получаем люлей",
             "label": "0/0",
             "style": {
                 "width": 280
@@ -88,7 +88,7 @@ const data = {
         },
         {
             "id": "COMPLETED",
-            "title": "Completed",
+            "title": "Осознаём ошибку и делаем всё заново",
             "style": {
                 "width": 280
             },
@@ -96,15 +96,15 @@ const data = {
             "cards": [
                 {
                     "id": "Completed1",
-                    "title": "Practice Meditation",
+                    "title": "Мяяяя",
                     "label": "15 mins",
-                    "description": "Use Headspace app"
+                    "description": "Привет от Сани"
                 },
                 {
                     "id": "Completed2",
-                    "title": "Maintain Daily Journal",
+                    "title": "Хочу спатеньки",
                     "label": "15 mins",
-                    "description": "Use Spreadsheet for now"
+                    "description": "Но надо делать дз"
                 }
             ]
         },
@@ -118,9 +118,9 @@ const data = {
             "cards": [
                 {
                     "id": "Repeat1",
-                    "title": "Morning Jog",
+                    "title": "Сходить к ветеринару",
                     "label": "30 mins",
-                    "description": "Track using fitbit"
+                    "description": "Научиться гавкать"
                 }
             ]
         },
@@ -134,15 +134,15 @@ const data = {
             "cards": [
                 {
                     "id": "Archived1",
-                    "title": "Go Trekking",
+                    "title": "Поиграть",
                     "label": "300 mins",
-                    "description": "Completed 10km on cycle"
+                    "description": "На нервах"
                 }
             ]
         },
         {
             "id": "ARCHIVED2",
-            "title": "Archived2",
+            "title": "Делать дз",
             "style": {
                 "width": 280
             },
@@ -150,9 +150,9 @@ const data = {
             "cards": [
                 {
                     "id": "Archived2",
-                    "title": "Go Jogging",
+                    "title": "Убить Артёма",
                     "label": "300 mins",
-                    "description": "Completed 10km on cycle"
+                    "description": "холодным оружием"
                 }
             ]
         },
@@ -166,9 +166,9 @@ const data = {
             "cards": [
                 {
                     "id": "Archived3",
-                    "title": "Go Cycling",
+                    "title": "выкупит душу",
                     "label": "300 mins",
-                    "description": "Completed 10km on cycle"
+                    "description": "обратно"
                 }
             ]
         }
