@@ -14,5 +14,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Приложение откроется в браузере, по адресу:<br>
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
+6. Актуальная версия всегда в ветке мастер, если вы уже клонировали, убедитесь что вы в мастере, выполняете команду
+### `git pull` 
+или "ПОЛУЧИТЬ" в SourceTree. Так вы скачаете к себе обновления
+
 
 
