@@ -8,10 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. открываем в терминале папку с проектом и пишем:
 ### `npm i`
 4. после успешной установки пакев пишем:
-### `npm start`
+### `npm run dev`
+5. открыть браузер:
 
 Приложение откроется в браузере, по адресу:<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 
 
