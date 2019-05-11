@@ -50,7 +50,7 @@ class MainPage extends Component {
             resources: [
                 {
                     id: 'r0',
-                    name: 'Мои задачи',
+                    name: 'Иванов И.В.',
                     //groupOnly: true
                 }
             ],
