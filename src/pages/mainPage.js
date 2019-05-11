@@ -27,7 +27,18 @@ import 'react-big-scheduler/lib/css/style.css';
 import moment from 'moment';
 import withDragDropContext from '../components/withDnDContext';
 
-
+const styles = {
+    root: {
+        flexGrow: 1,
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
+};
 
 @inject('store')
 @observer
@@ -70,7 +81,7 @@ class MainPage extends Component {
                     bgColor: '#5BC0EB',
                     //showPopover: false
                 },
-                
+
                 {
                     id: 2,
                     start: '2019-05-05 09:30:00',
@@ -80,7 +91,7 @@ class MainPage extends Component {
                     bgColor: '#FDE74C',
                     //showPopover: false
                 }
-                ,{
+                , {
                     id: 3,
                     start: '2019-05-01 09:30:00',
                     end: '2019-05-08 11:30:00',
@@ -98,12 +109,87 @@ class MainPage extends Component {
                     bgColor: '#5BC0EB',
                     //showPopover: false
                 },
+                {
+                    id: 7,
+                    start: '2019-05-06 09:30:00',
+                    end: '2019-05-08 8:30:00',
+                    resourceId: 'r0',
+                    title: 'тест vsdp тест',
+                    bgColor: '#5BC0EB',
+                    //showPopover: false
+                },
+                {
+                    id: 8,
+                    start: '2019-05-06 09:30:00',
+                    end: '2019-05-08 8:30:00',
+                    resourceId: 'r0',
+                    title: 'тест vsdp тест',
+                    bgColor: '#5BC0EB',
+                    //showPopover: false
+                },
             ]
 
         }
+
+        for (var i = 0; i < 10; i += 1) {
+            DemoData.events.push(
+                {
+                    id: 9 + i,
+                    start: '2019-05-11 09:30:00',
+                    end: '2019-05-11 8:30:00',
+                    resourceId: 'r0',
+                    title: 'тест vsdp тест',
+                    bgColor: '#5BC0EB',
+                    //showPopover: false
+                },
+            )
+        }
+
+        let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Week, false, false, {
+            eventItemPopoverEnabled: true,
+            views: [
+                { viewName: 'Resource View', viewType: ViewTypes.Week, showAgenda: false, isEventPerspective: false },
+                { viewName: 'Task View', viewType: ViewTypes.Week, showAgenda: false, isEventPerspective: true },
+            ]
+        }, {
+                //getDateLabelFunc: this.getDateLabel,
+                isNonWorkingTimeFunc: this.isNonWorkingTime
+            });
+        //set locale moment to the schedulerData, if your locale isn't English. By default, Scheduler comes with English(en, United States).
+        moment.locale('ru');
+        schedulerData.setLocaleMoment(moment);
+        //set resources here or later
+        let resources = [
+            {
+                id: 'r0',
+                name: 'Мои задачи',
+                groupOnly: true
+            }
+        ];
+        schedulerData.setResources(DemoData.resources);
+        //set events here or later, 
+        //the event array should be sorted in ascending order by event.start property, otherwise there will be some rendering errors
+        schedulerData.setEvents(DemoData.events);
         this.state = {
+            viewModel: schedulerData,
             DemoData: DemoData
         }
+    }
+
+    isNonWorkingTime = (schedulerData, time) => {
+        const { localeMoment } = schedulerData;
+        if (schedulerData.viewType === ViewTypes.Day) {
+            let hour = localeMoment(time).hour();
+            if (hour < 9 || hour > 18)
+                return true;
+        }
+        else {
+            let dayOfWeek = localeMoment(time).weekday();
+            if (dayOfWeek === 5 || dayOfWeek === 6)
+                return true;
+        }
+
+        return false;
     }
     prevClick = (schedulerData) => {
         schedulerData.prev();
@@ -140,6 +226,15 @@ class MainPage extends Component {
         alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
     };
 
+    ops1 = (schedulerData, event) => {
+        alert(`You just executed ops1 to event: {id: ${event.id}, title: ${event.title}}`);
+    };
+
+    ops2 = (schedulerData, event) => {
+        alert(`You just executed ops2 to event: {id: ${event.id}, title: ${event.title}}`);
+    };
+
+
     login() {
         console.log('login...');
         let pass = this.password.value;
@@ -157,28 +252,13 @@ class MainPage extends Component {
         }
     }
     render() {
-        let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Week,false, false, undefined);
-        //set locale moment to the schedulerData, if your locale isn't English. By default, Scheduler comes with English(en, United States).
-        moment.locale('ru');
-        schedulerData.setLocaleMoment(moment);
-        //set resources here or later
-        let resources = [
-            {
-                id: 'r0',
-                name: 'Мои задачи',
-                groupOnly: true
-            }
-        ];
-        schedulerData.setResources(resources);
-        //set events here or later, 
-        //the event array should be sorted in ascending order by event.start property, otherwise there will be some rendering errors
-        schedulerData.setEvents(this.state.DemoData.events);
 
+        const { viewModel } = this.state;
         return (
             <MuiThemeProvider theme={theme}>
                 <AppBar position="static">
                     <Toolbar variant="dense">
-                        <IconButton color="inherit" aria-label="Menu">
+                        <IconButton color="inherit" aria-label="Menu" style={styles.menuButton}>
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit">
@@ -195,7 +275,7 @@ class MainPage extends Component {
                     </Toolbar>
                 </AppBar>
 
-                <Scheduler schedulerData={schedulerData}
+                <Scheduler schedulerData={viewModel}
                     prevClick={this.prevClick}
                     nextClick={this.nextClick}
                     onSelectDate={this.onSelectDate}
