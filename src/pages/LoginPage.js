@@ -70,6 +70,7 @@ export default class LoginPage extends Component {
             //this.props.store.sendToast('Введите логин и пароль');
             return (0);
         } else {
+            this.props.store.user = {type: "manager", name:"Иванов И.В."};
             this.props.history.push('/main');
         }
 

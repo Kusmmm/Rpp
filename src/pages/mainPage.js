@@ -27,6 +27,10 @@ import 'react-big-scheduler/lib/css/style.css';
 import moment from 'moment';
 import withDragDropContext from '../components/withDnDContext';
 
+
+//icons 
+import Icon from '@material-ui/icons/AccountCircle';
+
 const styles = {
     root: {
         flexGrow: 1,
@@ -38,6 +42,9 @@ const styles = {
         marginLeft: -12,
         marginRight: 20,
     },
+    leftIcon: {
+        marginRight: theme.spacing.unit,
+    }
 };
 
 @inject('store')
@@ -269,6 +276,8 @@ class MainPage extends Component {
                 </AppBar>
                 <AppBar position="static" color="inherit">
                     <Toolbar variant="dense">
+                        <Button color="inherit"><Icon style={styles.leftIcon}></Icon>Профиль</Button>
+
 
                         <Button color="inherit">Создать задачу</Button>
                         <Button color="inherit">Создать колонку</Button>
