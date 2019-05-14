@@ -4,8 +4,9 @@ import { observer, Provider } from 'mobx-react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import mainStore from './stores/mainStore';
 import LoginPage from './pages/LoginPage';
-import MainPage from './pages/mainPage';
-
+import WorkerMainPage from './pages/WorkerMainPage';
+import ManagerMainPage from './pages/ManagerMainPage';
+import CreateTaskPage from './pages/CreateTaskPage';
 
 class App extends React.Component {
     render() {
@@ -14,7 +15,9 @@ class App extends React.Component {
                 <Router>
                     <Route path="/" exact component={LoginPage} />
                     <Route path="/login/" component={LoginPage} />
-                    <Route path="/main/" component={MainPage} />
+                    <Route path="/worker-main/" component={WorkerMainPage} />
+                    <Route path="/manager-main/" component={ManagerMainPage} />
+                    <Route path="/create-task/" component={CreateTaskPage} />
                 </Router>
                 
             </Provider>

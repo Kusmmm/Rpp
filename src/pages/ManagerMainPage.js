@@ -49,7 +49,7 @@ const styles = {
 
 @inject('store')
 @observer
-class MainPage extends Component {
+class ManagerMainPage extends Component {
     constructor(props) {
         super(props);
 
@@ -301,4 +301,4 @@ class MainPage extends Component {
         )
     }
 }
-export default withDragDropContext(MainPage)
+export default withDragDropContext(ManagerMainPage)
