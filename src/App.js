@@ -7,19 +7,21 @@ import LoginPage from './pages/LoginPage';
 import WorkerMainPage from './pages/WorkerMainPage';
 import ManagerMainPage from './pages/ManagerMainPage';
 import CreateTaskPage from './pages/CreateTaskPage';
+import { SnackbarProvider } from 'notistack';
 
 class App extends React.Component {
     render() {
         return (
             <Provider store={mainStore}>
-                <Router>
-                    <Route path="/" exact component={LoginPage} />
-                    <Route path="/login/" component={LoginPage} />
-                    <Route path="/worker-main/" component={WorkerMainPage} />
-                    <Route path="/manager-main/" component={ManagerMainPage} />
-                    <Route path="/create-task/" component={CreateTaskPage} />
-                </Router>
-                
+                <SnackbarProvider maxSnack={3}>
+                    <Router>
+                        <Route path="/" exact component={LoginPage} />
+                        <Route path="/login/" component={LoginPage} />
+                        <Route path="/worker-main/" component={WorkerMainPage} />
+                        <Route path="/manager-main/" component={ManagerMainPage} />
+                        <Route path="/create-task/" component={CreateTaskPage} />
+                    </Router>
+                </SnackbarProvider>
             </Provider>
         );
     }

@@ -28,25 +28,6 @@ class mainStore {
         bgColor: '#74D971',
       },
       {
-        id: 4,
-        start: '2019-05-05 09:30:00',
-        end: '2019-05-06 8:30:00',
-        resourceId: 'r1',
-        title: 'тест тест тест',
-        bgColor: '#5BC0EB',
-        //showPopover: false
-      },
-      {
-        id: 5,
-        start: '2019-05-05 09:30:00',
-        end: '2019-05-06 8:30:00',
-        resourceId: 'r1',
-        title: 'тест fndskj тест',
-        bgColor: '#5BC0EB',
-        //showPopover: false
-      },
-
-      {
         id: 2,
         start: '2019-05-05 09:30:00',
         end: '2019-05-15 8:30:00',
@@ -62,6 +43,24 @@ class mainStore {
         resourceId: 'r0',
         title: 'плохая задача',
         bgColor: '#DD5B3C',
+        //showPopover: false
+      },
+      {
+        id: 4,
+        start: '2019-05-05 09:30:00',
+        end: '2019-05-06 8:30:00',
+        resourceId: 'r1',
+        title: 'тест тест тест',
+        bgColor: '#5BC0EB',
+        //showPopover: false
+      },
+      {
+        id: 5,
+        start: '2019-05-05 09:30:00',
+        end: '2019-05-06 8:30:00',
+        resourceId: 'r1',
+        title: 'тест fndskj тест',
+        bgColor: '#5BC0EB',
         //showPopover: false
       },
       {

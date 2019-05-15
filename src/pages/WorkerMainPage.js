@@ -11,8 +11,10 @@ import theme from '../theme';
 
 // cards
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
 
 import AppBar from '@material-ui/core/AppBar';
@@ -30,8 +32,49 @@ import withDragDropContext from '../components/withDnDContext';
 
 //icons 
 import Icon from '@material-ui/icons/AccountCircle';
-
+import CreateIcon from '@material-ui/icons/AddCircleOutline';
 import CalendarDesk from '../components/calendarDesk';
+
+//графики
+import { Pie } from 'react-chartjs-2';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+
+const data = {
+    labels: [
+        'Просрочены',
+        'Скоро сдавать',
+        'Новые'
+    ],
+    datasets: [{
+        data: [300, 50, 100],
+        backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+        ],
+        hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+        ]
+    }]
+};
+
+const tileData = [
+    {
+        id: 1,
+    },
+    {
+        id: 2,
+    },
+    {
+        id: 3
+    },
+    {
+        id: 4
+    }
+]
 
 const styles = {
     root: {
@@ -61,7 +104,7 @@ class WorkerMainPage extends Component {
         }, {
                 isNonWorkingTimeFunc: this.isNonWorkingTime
             }, moment);
-       
+
         schedulerData.setResources(this.props.store.DemoData.resources);
         schedulerData.setEvents(this.props.store.DemoData.events);
         this.state = {
@@ -85,10 +128,10 @@ class WorkerMainPage extends Component {
         return false;
     }
 
-    createTask(){
+    createTask() {
         this.props.history.push('/create-task');
     }
-   
+
 
 
 
@@ -97,7 +140,7 @@ class WorkerMainPage extends Component {
         const { viewModel } = this.state;
         return (
             <MuiThemeProvider theme={theme}>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar variant="dense">
                         <IconButton color="inherit" aria-label="Menu" style={styles.menuButton}>
                             <MenuIcon />
@@ -108,19 +151,51 @@ class WorkerMainPage extends Component {
 
                     </Toolbar>
                 </AppBar>
-                <AppBar position="static" color="inherit">
+                <AppBar position="fixed" color="inherit" style={{ marginTop: 48 }}>
                     <Toolbar variant="dense">
                         <Button color="inherit"><Icon style={styles.leftIcon}></Icon>Профиль</Button>
 
 
-                        <Button color="inherit" onClick={()=>{this.createTask()}}>Создать задачу</Button>
-                        
+                        <Button color="inherit" onClick={() => { this.createTask() }}><CreateIcon style={styles.leftIcon} />Создать задачу</Button>
+
                     </Toolbar>
                 </AppBar>
 
-                <CalendarDesk data={this.props.store.DemoData} schedulerData={viewModel}/>
+                <div className="page" style={{marginTop:140}}>
+                    <CalendarDesk data={this.props.store.DemoData} schedulerData={viewModel} />
+                    <div style={{
+                        width:'100',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-around',
+                        overflow: 'hidden',
+                        backgroundColor: theme.palette.background.paper,
+                    }} cols={3}>
+                        {tileData.map(tile => (
+                            <div key={tile.id} style={{
+                                minWidth: 320,
+                                minHeight: 240,
+                                maxWidth: 600
+                            }}>
 
-            </MuiThemeProvider>
+                                <Card style={{ maxWidth: '90%', margin: 'auto' }}>
+                                    <CardActionArea>
+                                        <Typography gutterBottom style={{ textAlign: 'center', fontSize: 20 }}>
+                                            статистика задач
+                        </Typography>
+                                        <Pie data={data} />
+                                        <CardContent>
+
+
+                                        </CardContent>
+                                    </CardActionArea>
+
+                                </Card>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </MuiThemeProvider >
         )
     }
 }
